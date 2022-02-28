@@ -6,6 +6,12 @@
 
 --table:urlbase
 --table where we store all the URLs that we generated and short URLs that relate to them. Values Updated.
+create database bitme;
+
+create user bituser password 'bit';
+
+grant all privileges on database bitme to bituser;
+
 CREATE schema bitme
 
 CREATE TABLE bitme.urlbase (
