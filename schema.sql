@@ -16,12 +16,10 @@ grant all privileges on database bitmedb to bituser;
 
 CREATE schema bitme;
 
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 CREATE TABLE bitme.urlbase (
     short_url varchar(10) PRIMARY KEY,
-    full_url text NOT NULL,   
-    url_id uuid NOT NULL   
+    full_url text NOT NULL  
 );
 
 --table:urldata
@@ -38,8 +36,7 @@ CREATE TABLE bitme.urldata(
 --table that stores urls for getting info by admins
 CREATE TABLE bitme.adminurl (
     admin_url varchar(10) PRIMARY KEY,
-    short_url varchar(10) NOT NULL,      
-    admin_id uuid NOT NULL,
+    short_url varchar(10) NOT NULL,  
     FOREIGN KEY (short_url) REFERENCES bitme.urlbase(short_url)
 );
 
@@ -53,4 +50,16 @@ CREATE TABLE bitme.urlusedata(
     FOREIGN KEY (short_url) REFERENCES bitme.urlbase(short_url),
     constraint ip_num_of_uses_check check (ip_num_of_uses >= 0)
 );
+
+--INDEX
+--as the app is an URL sortener a must have inde is for bitme.urlbase that has data for redirects
+--so it will has much more reads than writes. 
+--Another logical index is for bitme.adminurl for quick access to your admin page.
+--However they are already PRIMARY KEYS so no need to create seperate indexes for them.
+--An index that can be usefull is an index for IP table in bitme.urlusedata, because we need to quickly get all ips for admin page
+--may be useless since there is short_url as primary_key.
+
+create index concurrently ip_id on bitme.urlusedata(ip);
+
+
 
