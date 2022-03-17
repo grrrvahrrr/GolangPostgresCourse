@@ -43,8 +43,8 @@ CREATE TABLE bitme.adminurl (
 --table urlusedata
 --table that stores uses of short url from certain ip adresses
 CREATE TABLE bitme.urlusedata(
-    short_url varchar(10) PRIMARY KEY,
-    ip INET NOT NULL,
+    ip text PRIMARY KEY ,
+    short_url varchar(10) NOT NULL,   
     last_used timestamp NOT NULL,
     ip_num_of_uses int NOT NULL,
     FOREIGN KEY (short_url) REFERENCES bitme.urlbase(short_url),

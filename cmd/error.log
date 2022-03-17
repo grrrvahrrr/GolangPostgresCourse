@@ -1,0 +1,3 @@
+{"level":"fatal","msg":"Error creating database files: failed to connect to `host=localhost user=bituser database=bitmedb`: server error (FATAL: unrecognized configuration parameter \"sslmde\" (SQLSTATE 42704))","time":"2022-03-17T16:46:51+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-17T16:51:00+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-17T16:54:11+03:00"}
