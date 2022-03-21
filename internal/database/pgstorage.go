@@ -67,8 +67,8 @@ func (pg *PgStorage) WriteURL(ctx context.Context, url entities.UrlData) (*entit
 		return nil, err
 	}
 
-	_, err = pg.db.ExecContext(ctx, `INSERT INTO bitme.urldata (short_url, total_num_of_uses) VALUES ($1, $2)`,
-		dbd.ShortURL, dbd.Data)
+	_, err = pg.db.ExecContext(ctx, `INSERT INTO bitme.urldata (short_url, last_used, total_num_of_uses) VALUES ($1, $2, $3)`,
+		dbd.ShortURL, time.Now(), dbd.Data)
 	if err != nil {
 		return nil, err
 	}
@@ -123,7 +123,7 @@ func (pg *PgStorage) ReadURL(ctx context.Context, url entities.UrlData) (*entiti
 				return nil, err
 			}
 		}
-		rows.Close()
+
 	} else if url.ShortURL != "" {
 		dbd.ShortURL = url.ShortURL
 	} else {
@@ -141,7 +141,6 @@ func (pg *PgStorage) ReadURL(ctx context.Context, url entities.UrlData) (*entiti
 			return nil, err
 		}
 	}
-	rows.Close()
 
 	rows, err = pg.db.QueryContext(ctx, `SELECT total_num_of_uses FROM bitme.urldata WHERE short_url = $1`, dbd.ShortURL)
 	if err != nil {
@@ -154,7 +153,6 @@ func (pg *PgStorage) ReadURL(ctx context.Context, url entities.UrlData) (*entiti
 			return nil, err
 		}
 	}
-	rows.Close()
 
 	if url.IP != "" {
 		dbd.IP = url.IP
@@ -168,13 +166,14 @@ func (pg *PgStorage) ReadURL(ctx context.Context, url entities.UrlData) (*entiti
 			); err != nil {
 				return nil, err
 			}
-			if dbd.IPData == "" {
-				dbd.IPData = "0"
-			}
 		}
-		rows.Close()
+
+	}
+	if dbd.IPData == "" {
+		dbd.IPData = "0"
 	}
 
+	rows.Close()
 	return &entities.UrlData{
 		FullURL:  dbd.FullURL,
 		ShortURL: dbd.ShortURL,

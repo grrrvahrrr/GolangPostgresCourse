@@ -4,7 +4,6 @@ import (
 	"CourseWork/internal/apichi"
 	"embed"
 	"encoding/json"
-	"errors"
 	"html/template"
 	"net"
 	"net/http"
@@ -74,8 +73,8 @@ func (rt *OpenApiChi) AdminRedirect(w http.ResponseWriter, r *http.Request, admi
 
 	nud, ipdata, err := rt.hs.GetDataHandle(r.Context(), apichi.ApiUrlData(urldata))
 	if err != nil {
-		log.Error(errors.Unwrap(err))
-		err = render.Render(w, r, apichi.ErrRender(errors.Unwrap(err)))
+		log.Error(err)
+		err = render.Render(w, r, apichi.ErrRender(err))
 		if err != nil {
 			log.Error(err)
 		}
@@ -117,8 +116,8 @@ func (rt *OpenApiChi) GenShortURL(w http.ResponseWriter, r *http.Request) {
 
 	nud, err := rt.hs.GenShortUrlHandle(r.Context(), apichi.ApiUrlData(urldata))
 	if err != nil {
-		log.Error(errors.Unwrap(err))
-		err = render.Render(w, r, apichi.ErrRender(errors.Unwrap(err)))
+		log.Error(err)
+		err = render.Render(w, r, apichi.ErrRender(err))
 		if err != nil {
 			log.Error(err)
 		}
@@ -160,8 +159,8 @@ func (rt *OpenApiChi) Redirect(w http.ResponseWriter, r *http.Request, shortURL 
 
 	nud, err := rt.hs.RedirectionHandle(r.Context(), shortURL, ip)
 	if err != nil {
-		log.Error(errors.Unwrap(err))
-		err = render.Render(w, r, apichi.ErrRender(errors.Unwrap(err)))
+		log.Error(err)
+		err = render.Render(w, r, apichi.ErrRender(err))
 		if err != nil {
 			log.Error(err)
 		}

@@ -52,11 +52,14 @@ func (ds *DataStorage) WriteData(ctx context.Context, url entities.UrlData) (*en
 		return nil, err
 	}
 
+	fmt.Println("data:", u.Data)
+
 	//Process data -- with more functions can be separated into independent function
 	u.Data, err = process.UpdateNumOfUses(u.Data)
 	if err != nil {
 		log.Error(err)
 	}
+	fmt.Println("data:", u.Data)
 
 	u.IPData, err = process.UpdateNumOfUses(u.IPData)
 	if err != nil {
