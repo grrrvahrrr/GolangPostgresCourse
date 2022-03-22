@@ -75,3 +75,29 @@
 {"level":"error","msg":"strconv.Atoi: parsing \"\": invalid syntax","time":"2022-03-21T17:05:18+03:00"}
 {"level":"error","msg":"ERROR: value too long for type character varying(10) (SQLSTATE 22001)","time":"2022-03-21T17:05:18+03:00"}
 {"level":"fatal","msg":"http: Server closed","time":"2022-03-21T17:06:08+03:00"}
+{"level":"error","msg":"timeout: context canceled","time":"2022-03-22T14:36:25+03:00"}
+{"level":"error","msg":"timeout: context canceled","time":"2022-03-22T14:36:26+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-22T14:40:02+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-22T14:43:52+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-22T14:46:17+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-22T14:47:49+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-22T14:49:37+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-22T14:49:47+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-22T14:59:01+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-22T15:17:51+03:00"}
+{"level":"error","msg":"ERROR: there is no unique or exclusion constraint matching the ON CONFLICT specification (SQLSTATE 42P10)","time":"2022-03-22T15:18:31+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-22T15:19:24+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-22T15:28:30+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-22T15:46:34+03:00"}
+{"level":"error","msg":"ERROR: syntax error at or near \",\" (SQLSTATE 42601)","time":"2022-03-22T16:23:58+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-22T16:24:11+03:00"}
+{"level":"error","msg":"ERROR: syntax error at or near \",\" (SQLSTATE 42601)","time":"2022-03-22T16:25:19+03:00"}
+{"level":"error","msg":"ERROR: syntax error at or near \",\" (SQLSTATE 42601)","time":"2022-03-22T16:25:51+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-22T16:26:27+03:00"}
+{"level":"error","msg":"ERROR: syntax error at or near \"WHERE\" (SQLSTATE 42601)","time":"2022-03-22T16:27:07+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-22T16:27:10+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-22T16:28:30+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-22T16:36:01+03:00"}
+{"level":"error","msg":"strconv.Atoi: parsing \"\": invalid syntax","time":"2022-03-22T16:36:27+03:00"}
+{"level":"error","msg":"ERROR: value too long for type character varying(10) (SQLSTATE 22001)","time":"2022-03-22T16:36:27+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-22T16:40:27+03:00"}

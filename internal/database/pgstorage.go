@@ -91,11 +91,24 @@ func (pg *PgStorage) WriteData(ctx context.Context, url entities.UrlData) (*enti
 		IPData:   url.IPData,
 	}
 
-	_, err := pg.db.ExecContext(ctx, `INSERT INTO bitme.urlusedata (ip, short_url, last_used, ip_num_of_uses) VALUES ($1, $2, $3, $4)
-	ON CONFLICT (ip) DO UPDATE SET last_used = $3, ip_num_of_uses = $4`,
+	res, err := pg.db.ExecContext(ctx, `UPDATE bitme.urlusedata SET last_used = $3, ip_num_of_uses = $4 WHERE ip = $1 AND short_url = $2`,
 		dbd.IP, dbd.ShortURL, time.Now(), dbd.IPData)
 	if err != nil {
+		if err != nil {
+			return nil, err
+		}
+	}
+
+	resrows, err := res.RowsAffected()
+	if err != nil {
 		return nil, err
+	}
+
+	if resrows == 0 {
+		_, err = pg.db.ExecContext(ctx, `INSERT INTO bitme.urlusedata (ip, short_url, last_used, ip_num_of_uses) VALUES($1, $2, $3, $4)`, dbd.IP, dbd.ShortURL, time.Now(), dbd.IPData)
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	_, err = pg.db.ExecContext(ctx, `UPDATE bitme.urldata SET last_used = $2, total_num_of_uses = $3 WHERE short_url = $1`,
@@ -119,10 +132,11 @@ func (pg *PgStorage) ReadURL(ctx context.Context, url entities.UrlData) (*entiti
 		for rows.Next() {
 			if err := rows.Scan(
 				&dbd.ShortURL,
-			); err != nil {
+			); err != nil && err != sql.ErrNoRows {
 				return nil, err
 			}
 		}
+		rows.Close()
 
 	} else if url.ShortURL != "" {
 		dbd.ShortURL = url.ShortURL
@@ -137,10 +151,11 @@ func (pg *PgStorage) ReadURL(ctx context.Context, url entities.UrlData) (*entiti
 	for rows.Next() {
 		if err := rows.Scan(
 			&dbd.FullURL,
-		); err != nil {
+		); err != nil && err != sql.ErrNoRows {
 			return nil, err
 		}
 	}
+	rows.Close()
 
 	rows, err = pg.db.QueryContext(ctx, `SELECT total_num_of_uses FROM bitme.urldata WHERE short_url = $1`, dbd.ShortURL)
 	if err != nil {
@@ -149,21 +164,22 @@ func (pg *PgStorage) ReadURL(ctx context.Context, url entities.UrlData) (*entiti
 	for rows.Next() {
 		if err := rows.Scan(
 			&dbd.Data,
-		); err != nil {
+		); err != nil && err != sql.ErrNoRows {
 			return nil, err
 		}
 	}
+	rows.Close()
 
 	if url.IP != "" {
 		dbd.IP = url.IP
-		rows, err = pg.db.QueryContext(ctx, `SELECT ip_num_of_uses FROM bitme.urlusedata WHERE ip = $1`, dbd.IP)
+		rows, err = pg.db.QueryContext(ctx, `SELECT ip_num_of_uses FROM bitme.urlusedata WHERE ip = $1 AND short_url = $2`, dbd.IP, dbd.ShortURL)
 		if err != nil {
 			return nil, err
 		}
 		for rows.Next() {
 			if err := rows.Scan(
 				&dbd.IPData,
-			); err != nil {
+			); err != nil && err != sql.ErrNoRows {
 				return nil, err
 			}
 		}
@@ -194,18 +210,20 @@ func (pg *PgStorage) GetIPData(ctx context.Context, url entities.UrlData) (strin
 	if err != nil {
 		return "", err
 	}
-	defer rows.Close()
+
 	for rows.Next() {
 		if err := rows.Scan(
 			&dbd.IP,
 			&dbd.IPData,
-		); err != nil {
+		); err != nil && err != sql.ErrNoRows {
 			return "", err
 		}
 
 		ipdata += "IP: " + dbd.IP + " # Redirects: " + dbd.IPData + "\n"
 
 	}
+
+	rows.Close()
 
 	return ipdata, nil
 }
