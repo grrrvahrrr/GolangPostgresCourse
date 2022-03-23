@@ -62,7 +62,6 @@ func (pg *PgStorage) WriteURL(ctx context.Context, url entities.UrlData) (*entit
 
 	_, err = pg.db.ExecContext(ctx, `INSERT INTO bitme.adminurl (admin_url ,short_url) VALUES ($1, $2)`,
 		dbd.AdminURL, dbd.ShortURL)
-
 	if err != nil {
 		return nil, err
 	}

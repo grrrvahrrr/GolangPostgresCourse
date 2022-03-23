@@ -101,3 +101,15 @@
 {"level":"error","msg":"strconv.Atoi: parsing \"\": invalid syntax","time":"2022-03-22T16:36:27+03:00"}
 {"level":"error","msg":"ERROR: value too long for type character varying(10) (SQLSTATE 22001)","time":"2022-03-22T16:36:27+03:00"}
 {"level":"fatal","msg":"http: Server closed","time":"2022-03-22T16:40:27+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-23T14:50:59+03:00"}
+{"level":"error","msg":"can't scan into dest[0]: cannot assign 0 into *string","time":"2022-03-23T14:53:39+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-23T14:54:00+03:00"}
+{"level":"error","msg":"no rows in result set","time":"2022-03-23T15:06:19+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-23T15:06:38+03:00"}
+{"level":"error","msg":"no rows in result set","time":"2022-03-23T15:08:49+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-23T15:08:57+03:00"}
+{"level":"error","msg":"no rows in result set","time":"2022-03-23T15:09:22+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-23T15:09:29+03:00"}
+{"level":"error","msg":"no rows in result set","time":"2022-03-23T15:12:11+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-23T15:12:19+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-23T15:14:31+03:00"}
