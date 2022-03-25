@@ -131,7 +131,6 @@ func (pgxs *PgxStorage) WriteData(ctx context.Context, url entities.UrlData) (*e
 	_, err = pgxs.db.Query(ctx, `UPDATE bitme.urldata SET last_used = $2, total_num_of_uses = $3 WHERE short_url = $1`,
 		dbd.ShortURL, time.Now(), dbd.Data)
 	if err != nil {
-		fmt.Println("err in write")
 		return nil, err
 	}
 

@@ -6,13 +6,15 @@
 
 --table:urlbase
 --table where we store all the URLs that we generated and short URLs that relate to them. Values Updated.
-create database bitmedb;
+BEGIN;
 
-create user bituser password 'bit';
+-- create database bitmedb;
 
-grant all privileges on database bitmedb to bituser;
+-- create user bituser password 'bit';
 
-\c bitmedb bituser;
+-- grant all privileges on database bitmedb to bituser;
+
+-- \c bitmedb bituser;
 
 CREATE schema bitme;
 
@@ -60,6 +62,8 @@ CREATE TABLE bitme.urlusedata(
 --may be useless since there is short_url as primary_key.
 
 create index concurrently ip_id on bitme.urlusedata(ip);
+
+COMMIT;
 
 
 
