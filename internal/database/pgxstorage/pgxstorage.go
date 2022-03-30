@@ -29,7 +29,7 @@ type PgxStorage struct {
 	db *pgxpool.Pool
 }
 
-func NewPgxConfig(dsn string, maxConns int32, minConns int32, healthCheckMin int, maxConnIdleTimeMin int, connTimeoutSec int) (*pgxpool.Config, error) {
+func NewPgxConfig(dsn string, maxConns int32, minConns int32) (*pgxpool.Config, error) {
 	cfg, err := pgxpool.ParseConfig(dsn)
 	if err != nil {
 		return nil, err
@@ -37,9 +37,6 @@ func NewPgxConfig(dsn string, maxConns int32, minConns int32, healthCheckMin int
 
 	cfg.MaxConns = maxConns
 	cfg.MinConns = minConns
-	cfg.HealthCheckPeriod = time.Duration(healthCheckMin) * time.Minute
-	cfg.MaxConnIdleTime = time.Duration(maxConnIdleTimeMin) * time.Minute
-	cfg.ConnConfig.ConnectTimeout = time.Duration(connTimeoutSec) * time.Second
 
 	return cfg, nil
 }

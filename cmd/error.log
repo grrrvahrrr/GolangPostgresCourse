@@ -113,3 +113,12 @@
 {"level":"error","msg":"no rows in result set","time":"2022-03-23T15:12:11+03:00"}
 {"level":"fatal","msg":"http: Server closed","time":"2022-03-23T15:12:19+03:00"}
 {"level":"fatal","msg":"http: Server closed","time":"2022-03-23T15:14:31+03:00"}
+{"level":"error","msg":"context canceled","time":"2022-03-29T17:40:49+03:00"}
+{"level":"error","msg":"context canceled","time":"2022-03-29T17:41:06+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-29T17:41:13+03:00"}
+{"level":"error","msg":"context canceled","time":"2022-03-30T11:19:44+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-30T11:19:53+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-30T11:29:06+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-30T11:29:56+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-30T11:32:24+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-30T11:33:41+03:00"}
