@@ -135,3 +135,17 @@
 {"level":"fatal","msg":"http: Server closed","time":"2022-03-30T14:31:07+03:00"}
 {"level":"fatal","msg":"http: Server closed","time":"2022-03-30T14:32:20+03:00"}
 {"level":"fatal","msg":"http: Server closed","time":"2022-03-30T14:35:22+03:00"}
+{"level":"error","msg":"context canceled","time":"2022-03-31T15:25:44+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-31T15:25:50+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-31T15:27:25+03:00"}
+{"level":"error","msg":"context canceled","time":"2022-03-31T15:27:53+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-31T15:27:56+03:00"}
+{"level":"error","msg":"context canceled","time":"2022-03-31T15:28:39+03:00"}
+{"level":"error","msg":"context canceled","time":"2022-03-31T15:28:39+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-31T15:33:08+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-31T15:34:20+03:00"}
+{"level":"error","msg":"context canceled","time":"2022-03-31T15:49:15+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-31T15:49:18+03:00"}
+{"level":"error","msg":"context canceled","time":"2022-03-31T15:54:14+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-31T15:54:38+03:00"}
+{"level":"fatal","msg":"http: Server closed","time":"2022-03-31T15:55:24+03:00"}

@@ -49,7 +49,7 @@ func main() {
 	// 	log.Fatal("Error creating database files: ", err)
 	// }
 
-	pgxcfg, err := pgxstorage.NewPgxConfig(dsn, 2, 1, 1, 2)
+	pgxcfg, err := pgxstorage.NewPgxConfig(dsn, 50, 10, 1, 2)
 	if err != nil {
 		log.Fatal("Error creating database config: ", err)
 	}
